@@ -55,12 +55,6 @@ When using this helper you must specify which servers are running redis:
     server "app-db01.example.com", :db , :primary => true
 
 
-## capistrano-eden/setup
-
-Defines 'deploy:setup' to create all directories correctly, respecting
-':umask' and 'ugroup'.
-
-
 ## capistrano-eden/set_config_files
 
 Link all desired config files, local to the deployment server inside ‘#{shared_path}/config’, to #{latest_release}/config dir.
@@ -93,6 +87,12 @@ After requiring this helper, set the paths to be symlinked using the
         '/data/tst/assets' => "public/assets",
         '/data/tst/static' => "public/static",
     }
+
+
+## capistrano-eden/setup
+
+Defines 'deploy:setup' to create all directories correctly, respecting
+':umask' and 'ugroup'.
 
 
 ## capistrano-eden/version
