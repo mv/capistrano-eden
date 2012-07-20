@@ -61,7 +61,22 @@ Defines 'deploy:setup' to create all directories correctly, respecting
 ':umask' and 'ugroup'.
 
 
-## capistrano-eden/symlinks
+## capistrano-eden/set_config_files
+
+Link all desired config files, local to the deployment server inside ‘#{shared_path}/config’, to #{latest_release}/config dir.
+
+    ### Symlink from #{shared_path}/config/
+    ###           to #{latest_release}/config/
+    ### i.e.
+    ###     file(s) => destination_dir/
+
+    set :config_files, {
+        '*.yml'          => "config/",
+        'production.rb'  => "config/environments/"
+    }
+
+
+## capistrano-eden/set_symlinks
 
 During deployment, this helper replaces each of the given paths with a
 symbolic link that points to files or directories that contain data
@@ -70,10 +85,11 @@ that should persist across deployments (uploads, assets, for example).
 After requiring this helper, set the paths to be symlinked using the
 :symlinks variable:
 
-    ### Symlink inside RAILS_ROOT
+    ### Symlinks inside #{latest_release}
     ###     path => destination
+
     set :symlinks, {
-        '/data/libc'       => "public/libc"  ,
+        '/data/common'     => "public/common",
         '/data/tst/assets' => "public/assets",
         '/data/tst/static' => "public/static",
     }
