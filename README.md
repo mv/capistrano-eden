@@ -111,3 +111,7 @@ branch/tag that was deployed.
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mv/capistrano-eden/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
